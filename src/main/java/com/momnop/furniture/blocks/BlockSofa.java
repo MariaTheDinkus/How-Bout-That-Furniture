@@ -62,8 +62,15 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 				if (!playerIn.capabilities.isCreativeMode) {
 					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
 				}
+				if (!worldIn.isRemote) {
+					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
+				}
 				return true;
 			}
+		}
+		
+		if (!worldIn.isRemote) {
+			worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
 		}
 		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);
@@ -73,6 +80,8 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn,
 			BlockPos pos) {
 		IBlockState newState = state;
+		
+		TileEntitySofa sofa = (TileEntitySofa) worldIn.getTileEntity(pos);
 		
 		if (worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())) != null && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())).getBlock() instanceof BlockSofa && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())).getValue(FACING) == state.getValue(FACING)) {
 			newState = newState.withProperty(RIGHT, true);

@@ -19,11 +19,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.momnop.furniture.tiles.TileEntityChair;
-import com.momnop.furniture.tiles.TileEntityStool;
 import com.momnop.furniture.utils.SittableUtil;
 
-public class BlockStool extends BlockFurniture implements ITileEntityProvider {
+public class BlockStool extends BlockFurniture {
 	
 	public static final PropertyInteger COLOR = PropertyInteger.create("color", 0, 15);
 
@@ -44,27 +42,25 @@ public class BlockStool extends BlockFurniture implements ITileEntityProvider {
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return 0;
+		return state.getValue(COLOR);
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState();
+		return this.getDefaultState().withProperty(COLOR, meta);
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntityStool stool = (TileEntityStool) worldIn.getTileEntity(pos);
-		
 		if (playerIn.getHeldItem(hand) != ItemStack.field_190927_a) {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (heldItem.getItem() instanceof ItemDye && state.getValue(COLOR) != 15 - heldItem.getItemDamage()) {
-				stool.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
 					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
 				}
+				worldIn.setBlockState(pos, state.withProperty(COLOR, 15 - heldItem.getItemDamage()), 2);
 				return true;
 			}
 		}
@@ -76,11 +72,6 @@ public class BlockStool extends BlockFurniture implements ITileEntityProvider {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source,
 			BlockPos pos) {
 		return new AxisAlignedBB(2F / 16F, 0, 2F / 16F, 14F / 16F, 0.5, 14F / 16F);
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityStool();
 	}
 	
 }

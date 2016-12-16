@@ -23,7 +23,6 @@ import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.proxies.CommonProxy;
 import com.momnop.furniture.tiles.TileEntityChair;
 import com.momnop.furniture.tiles.TileEntitySofa;
-import com.momnop.furniture.tiles.TileEntityStool;
 
 @Mod(name = ModInfo.NAME, modid = ModInfo.MODID, version = ModInfo.VERSION, acceptedMinecraftVersions = "[1.11]")
 public class Furniture
@@ -52,7 +51,6 @@ public class Furniture
     	MinecraftForge.EVENT_BUS.register(new FurnitureEventHandler());
     	GameRegistry.registerTileEntity(TileEntitySofa.class, "tileEntitySofa");
     	GameRegistry.registerTileEntity(TileEntityChair.class, "tileEntityChair");
-    	GameRegistry.registerTileEntity(TileEntityStool.class, "tileEntityStool");
     	if (event.getSide() == Side.CLIENT) {
     		RenderRegistry.registerRenderers();
     	}

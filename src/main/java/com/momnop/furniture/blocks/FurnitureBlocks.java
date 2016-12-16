@@ -18,6 +18,7 @@ public class FurnitureBlocks
 	public static Block lightSwitch;
 	public static Block fancyFence;
 	public static Block rockPath;
+	public static Block desk, deskInvisible1, deskInvisible2;
 	
 	public static void load() {
 		loadBlocks();
@@ -62,6 +63,10 @@ public class FurnitureBlocks
     	fancyFence = new BlockFurnitureFence(Material.WOOD, 2.0F, SoundType.WOOD, "fancy_fence");
     	
     	rockPath = new BlockRockPath(Material.ROCK, 1.5F, SoundType.STONE, "rock_path");
+    	
+    	desk = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk");
+    	deskInvisible1 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_1");
+    	deskInvisible2 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_2");
     }
     
     public static void register(Block b) {

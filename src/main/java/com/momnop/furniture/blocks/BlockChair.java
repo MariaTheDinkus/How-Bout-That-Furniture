@@ -24,6 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.momnop.furniture.tiles.TileEntityChair;
+import com.momnop.furniture.tiles.TileEntitySofa;
 import com.momnop.furniture.utils.RotationUtils;
 import com.momnop.furniture.utils.SittableUtil;
 
@@ -59,8 +60,15 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 				if (!playerIn.capabilities.isCreativeMode) {
 					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
 				}
+				if (!worldIn.isRemote) {
+					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()));
+				}
 				return true;
 			}
+		}
+		
+		if (!worldIn.isRemote) {
+			worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()));
 		}
 		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);

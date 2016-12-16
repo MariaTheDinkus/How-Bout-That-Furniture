@@ -1,0 +1,342 @@
+{
+	"parent": "block/block",
+    "textures": {
+		"particle": "furniture:blocks/desk",
+		"paper": "blocks/quartz_block_top",
+		"wood": "furniture:blocks/desk",
+		"wood2": "furniture:blocks/desk2",
+		"wood3": "furniture:blocks/desk2design",
+		"wood4": "furniture:blocks/desk2drawer",
+		"blackboard": "furniture:blocks/blackboard",
+		"goldstrip": "furniture:blocks/goldstrip",
+		"pencil": "furniture:blocks/pencil",
+		"eraser": "furniture:blocks/eraser",
+		"notepad": "furniture:blocks/notepad",
+		"book": "furniture:blocks/book",
+		"book2": "furniture:blocks/bookside",
+		"log": "blocks/log_big_oak",
+		"obsidian": "blocks/obsidian"
+    },
+	"display": {
+        "gui": {
+            "rotation": [ 30, 225, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.3125, 0.3125, 0.3125 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0],
+            "scale":[ 0.125, 0.125, 0.125 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.25, 0.25, 0.25 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 45, 0 ],
+            "translation": [ 0, 2.5, 0],
+            "scale": [ 0.1875, 0.1875, 0.1875 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.20, 0.20, 0.20 ]
+        },
+        "firstperson_lefthand": {
+            "rotation": [ 0, 225, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.20, 0.20, 0.20 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "DeskTop1",
+            "from": [ -16.0, 15.0, 0.0 ], 
+            "to": [ 0.0, 16.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "east": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "south": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "west": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "up": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "DeskBack1",
+            "from": [ -14.0, 0.0, 2.0 ], 
+            "to": [ 1.0, 15.0, 14.0 ], 
+            "faces": {
+                "north": { "texture": "wood3", "uv": [ 0.0, 0.0, 15.0, 15.0 ] },
+                "east": { "texture": "wood2", "uv": [ 0.0, 0.0, 12.0, 15.0 ] },
+                "south": { "texture": "wood4", "uv": [ 0.0, 0.0, 15.0, 15.0 ] },
+                "west": { "texture": "wood2", "uv": [ 0.0, 0.0, 12.0, 15.0 ] },
+                "up": { "texture": "wood2", "uv": [ 0.0, 0.0, 15.0, 12.0 ] },
+                "down": { "texture": "wood2", "uv": [ 0.0, 0.0, 15.0, 12.0 ] }
+            }
+        },
+        {
+            "name": "DeskSideL",
+            "from": [ -15.0, 0.0, 1.0 ], 
+            "to": [ -14.0, 15.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 15.0 ] },
+                "east": { "texture": "wood", "uv": [ 0.0, 0.0, 14.0, 15.0 ] },
+                "south": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 15.0 ] },
+                "west": { "texture": "wood", "uv": [ 0.0, 0.0, 14.0, 15.0 ] },
+                "up": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 14.0 ] },
+                "down": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "DeskSideR",
+            "from": [ 30.0, 0.0, 1.0 ], 
+            "to": [ 31.0, 15.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 15.0 ] },
+                "east": { "texture": "wood", "uv": [ 0.0, 0.0, 14.0, 15.0 ] },
+                "south": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 15.0 ] },
+                "west": { "texture": "wood", "uv": [ 0.0, 0.0, 14.0, 15.0 ] },
+                "up": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 14.0 ] },
+                "down": { "texture": "wood", "uv": [ 0.0, 0.0, 1.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "Blackboard",
+            "from": [ -2.0, 16.0, 4.0 ], 
+            "to": [ 14.0, 16.3, 16.0 ], 
+            "faces": {
+                "north": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 0.3 ] },
+                "east": { "texture": "blackboard", "uv": [ 0.0, 0.0, 12.0, 0.3 ] },
+                "south": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 0.3 ] },
+                "west": { "texture": "blackboard", "uv": [ 0.0, 0.0, 12.0, 0.3 ] },
+                "up": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 12.0 ] },
+                "down": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 12.0 ] }
+            }
+        },
+        {
+            "name": "Paper",
+            "from": [ 9.0, 16.4, 4.0 ], 
+            "to": [ 16.0, 16.4, 12.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "up": { "texture": "paper", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "paper", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "Blackboard2",
+            "from": [ 14.0, 16.0, 4.0 ], 
+            "to": [ 18.0, 16.3, 16.0 ], 
+            "faces": {
+                "north": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 0.3 ] },
+                "east": { "texture": "blackboard", "uv": [ 0.0, 0.0, 4.0, 0.3 ] },
+                "south": { "texture": "blackboard", "uv": [ 0.0, 0.0, 16.0, 0.3 ] },
+                "west": { "texture": "blackboard", "uv": [ 0.0, 0.0, 4.0, 0.3 ] },
+                "up": { "texture": "blackboard", "uv": [ 0.0, 0.0, 4.0, 12.0 ] },
+                "down": { "texture": "blackboard", "uv": [ 0.0, 0.0, 4.0, 12.0 ] }
+            }
+        },
+        {
+            "name": "DeskTop2",
+            "from": [ 0.0, 15.0, 0.0 ], 
+            "to": [ 16.0, 16.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "east": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "south": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "west": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "up": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "DeskTop3",
+            "from": [ 16.0, 15.0, 0.0 ], 
+            "to": [ 32.0, 16.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "east": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "south": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "west": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 1.0 ] },
+                "up": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "wood", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "DeskBack3",
+            "from": [ 15.0, 0.0, 2.0 ], 
+            "to": [ 30.0, 15.0, 14.0 ], 
+            "faces": {
+                "north": { "texture": "wood3", "uv": [ 0.0, 0.0, 15.0, 15.0 ] },
+                "east": { "texture": "wood2", "uv": [ 0.0, 0.0, 12.0, 15.0 ] },
+                "south": { "texture": "wood4", "uv": [ 0.0, 0.0, 15.0, 15.0 ] },
+                "west": { "texture": "wood2", "uv": [ 0.0, 0.0, 12.0, 15.0 ] },
+                "up": { "texture": "wood2", "uv": [ 0.0, 0.0, 15.0, 12.0 ] },
+                "down": { "texture": "wood2", "uv": [ 0.0, 0.0, 15.0, 12.0 ] }
+            }
+        },
+        {
+            "name": "Paper2",
+            "from": [ 9.0, 16.5, 6.0 ], 
+            "to": [ 16.0, 16.5, 14.0 ], 
+            "faces": {
+                "up": { "texture": "paper", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "rotation": 90 },
+                "down": { "texture": "paper", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+        {
+            "name": "PenHolderBase",
+            "from": [ -4.0, 16.0, 14.0 ], 
+            "to": [ -2.0, 17.0, 16.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 5.5 ] },
+                "east": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 5.5 ] },
+                "south": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 5.5 ] },
+                "west": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 5.5 ] },
+                "up": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "down": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] }
+            }
+        },
+        {
+            "name": "PenHolderSide1",
+            "from": [ -4.0, 17.0, 14.0 ], 
+            "to": [ -2.0, 19.0, 14.5 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "east": { "texture": "log", "uv": [ 0.0, 0.0, 2.5, 14.5 ] },
+                "south": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "west": { "texture": "log", "uv": [ 0.0, 0.0, 2.5, 14.5 ] },
+                "up": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] },
+                "down": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] }
+            }
+        },
+        {
+            "name": "PenHolderSide2",
+            "from": [ -4.0, 17.0, 15.5 ], 
+            "to": [ -2.0, 19.0, 16.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "east": { "texture": "log", "uv": [ 0.0, 0.0, 2.5, 14.5 ] },
+                "south": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "west": { "texture": "log", "uv": [ 0.0, 0.0, 2.5, 14.5 ] },
+                "up": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] },
+                "down": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] }
+            }
+        },
+        {
+            "name": "PenHolderSide3",
+            "from": [ -4.0, 17.0, 14.5 ], 
+            "to": [ -3.5, 19.0, 15.5 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "east": { "texture": "log", "uv": [ 0.0, 0.0, 5.0, 9.5 ] },
+                "south": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "west": { "texture": "log", "uv": [ 0.0, 0.0, 5.0, 9.5 ] },
+                "up": { "texture": "log", "uv": [ 0.0, 0.0, 2.7, 3.0 ] },
+                "down": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] }
+            }
+        },
+        {
+            "name": "PenHolderSide4",
+            "from": [ -2.5, 17.0, 14.5 ], 
+            "to": [ -2.0, 19.0, 15.5 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "east": { "texture": "log", "uv": [ 0.0, 0.0, 5.0, 9.5 ] },
+                "south": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 11.0 ] },
+                "west": { "texture": "log", "uv": [ 0.0, 0.0, 5.0, 9.5 ] },
+                "up": { "texture": "log", "uv": [ 0.0, 0.0, 2.7, 3.0 ] },
+                "down": { "texture": "log", "uv": [ 0.0, 0.0, 11.0, 3.0 ] }
+            }
+        },
+        {
+            "name": "Pen",
+            "from": [ -0.1, 22.0, 10.0 ], 
+            "to": [ 0.4, 25.0, 10.5 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "z", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "pencil", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "east": { "texture": "pencil", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "south": { "texture": "pencil", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "west": { "texture": "pencil", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "eraser", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "pencil", "uv": [ 0.0, 0.0, 0.5, 0.5 ] }
+            }
+        },
+        {
+            "name": "Notepad",
+            "from": [ 21.0, 16.0, -1.0 ], 
+            "to": [ 27.0, 16.5, 6.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": -22.5 },
+            "faces": {
+                "north": { "texture": "notepad", "uv": [ 0.0, 0.0, 16.0, 2.0 ] },
+                "east": { "texture": "notepad", "uv": [ 0.0, 0.0, 1.0, 16.0 ], "rotation": 90 },
+                "south": { "texture": "notepad", "uv": [ 2.0, 16.0, 16.0, 15.0 ] },
+                "west": { "texture": "notepad", "uv": [ 0.0, 0.0, 1.0, 16.0 ], "rotation": 270 },
+                "up": { "texture": "notepad", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "notepad", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        },
+		{
+            "name": "BookPaper",
+            "from": [ -13.0, 16.0, 1.0 ], 
+            "to": [ -9.0, 17.0, 6.0 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "paper", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "east": { "texture": "paper", "uv": [ 0.0, 0.0, 5.0, 1.0 ] },
+                "south": { "texture": "paper", "uv": [ 0.0, 0.0, 4.0, 1.0 ] },
+                "west": { "texture": "paper", "uv": [ 0.0, 0.0, 5.0, 1.0 ] },
+                "up": { "texture": "paper", "uv": [ 0.0, 0.0, 4.0, 5.0 ] },
+                "down": { "texture": "paper", "uv": [ 0.0, 0.0, 4.0, 5.0 ] }
+            }
+        },
+        {
+            "name": "BookBottom",
+            "from": [ -13.0, 16.0, 0.8 ], 
+            "to": [ -8.8, 16.1, 6.2 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 0.1 ] },
+                "east": { "texture": "book", "uv": [ 0.0, 0.0, 5.4, 0.1 ] },
+                "south": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 0.1 ] },
+                "up": { "texture": "book", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 5.4 ] }
+            }
+        },
+        {
+            "name": "BookTop",
+            "from": [ -13.0, 17.0, 0.8 ], 
+            "to": [ -8.8, 17.1, 6.2 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 0.1 ] },
+                "east": { "texture": "book", "uv": [ 0.0, 0.0, 5.4, 0.1 ] },
+                "south": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 0.1 ] },
+                "up": { "texture": "book", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "book", "uv": [ 0.0, 0.0, 4.2, 5.4 ] }
+            }
+        },
+        {
+            "name": "BookSide",
+            "from": [ -13.1, 16.0, 0.8 ], 
+            "to": [ -13.0, 17.1, 6.2 ], 
+            "rotation": { "origin": [ 8.0, 8.0, 8.0 ], "axis": "y", "angle": 22.5 },
+            "faces": {
+                "north": { "texture": "book", "uv": [ 0.0, 0.0, 0.1, 1.1 ] },
+                "east": { "texture": "book", "uv": [ 0.0, 0.0, 5.4, 1.1 ] },
+                "south": { "texture": "book", "uv": [ 0.0, 0.0, 0.1, 1.1 ] },
+                "west": { "texture": "book2", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "up": { "texture": "book", "uv": [ 0.0, 0.0, 0.1, 8.4 ] },
+                "down": { "texture": "book", "uv": [ 0.0, 0.0, 0.1, 5.4 ] }
+            }
+        }
+    ]
+}

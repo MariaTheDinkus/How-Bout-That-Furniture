@@ -73,6 +73,8 @@ public class FurnitureCreativeTab extends CreativeTabs {
 		addBlock(FurnitureBlocks.fancyFence);
 		
 		addBlock(FurnitureBlocks.rockPath);
+		
+		//addBlock(FurnitureBlocks.desk);
 	}
 
 	private void addItem(Item item) {
