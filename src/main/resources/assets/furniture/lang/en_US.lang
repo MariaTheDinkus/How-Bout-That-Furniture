@@ -1,0 +1,34 @@
+﻿# CREATIVE TAB
+itemGroup.furniture=How 'Bout That Furniture
+
+# BLOCKS
+tile.sofa.name=Sofa
+tile.chair_oak.name=Oak Chair
+tile.chair_spruce.name=Spruce Chair
+tile.chair_birch.name=Birch Chair
+tile.chair_jungle.name=Jungle Chair
+tile.chair_acacia.name=Acacia Chair
+tile.chair_dark_oak.name=Dark Oak Chair
+tile.stool_oak.name=Oak Stool
+tile.stool_spruce.name=Spruce Stool
+tile.stool_birch.name=Birch Stool
+tile.stool_jungle.name=Jungle Stool
+tile.stool_acacia.name=Acacia Stool
+tile.stool_dark_oak.name=Dark Oak Stool
+tile.table_oak.name=Oak Table
+tile.table_spruce.name=Spruce Table
+tile.table_birch.name=Birch Table
+tile.table_jungle.name=Jungle Table
+tile.table_acacia.name=Acacia Table
+tile.table_dark_oak.name=Dark Oak Table
+tile.coffee_table_oak.name=Oak Coffee Table
+tile.coffee_table_spruce.name=Spruce Coffee Table
+tile.coffee_table_birch.name=Birch Coffee Table
+tile.coffee_table_jungle.name=Jungle Coffee Table
+tile.coffee_table_acacia.name=Acacia Coffee Table
+tile.coffee_table_dark_oak.name=Dark Oak Coffee Table
+tile.blinds.name=Wooden Blinds
+tile.doorbell.name=Doorbell
+tile.light_switch.name=Light Switch
+tile.fancy_fence.name=Picket Fence
+tile.rock_path.name=Rock Path

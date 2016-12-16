@@ -1,0 +1,50 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "furniture:blinds"
+  },
+  "variants": {
+    "normal": [{ "model": "furniture:blinds" }],
+    "inventory": [{ "y": 180 }],
+	
+	"facing=north,left=false,open=true,up=false": [{}],
+	"facing=north,left=true,open=true,up=false": { "model": "furniture:blinds_nograbber" },
+	"facing=north,left=false,open=true,up=true": { "model": "furniture:blinds_notop" },
+	"facing=north,left=true,open=true,up=true": { "model": "furniture:blinds_notop" },
+	
+	"facing=east,left=false,open=true,up=false": { "y": 90 },
+	"facing=east,left=true,open=true,up=false": { "model": "furniture:blinds_nograbber", "y": 90 },
+	"facing=east,left=false,open=true,up=true": { "model": "furniture:blinds_notop", "y": 90 },
+	"facing=east,left=true,open=true,up=true": { "model": "furniture:blinds_notop", "y": 90 },
+	
+	"facing=south,left=false,open=true,up=false": { "y": 180 },
+	"facing=south,left=true,open=true,up=false": { "model": "furniture:blinds_nograbber", "y": 180 },
+	"facing=south,left=false,open=true,up=true": { "model": "furniture:blinds_notop", "y": 180 },
+	"facing=south,left=true,open=true,up=true": { "model": "furniture:blinds_notop", "y": 180 },
+	
+	"facing=west,left=false,open=true,up=false": { "y": -90 },
+	"facing=west,left=true,open=true,up=false": { "model": "furniture:blinds_nograbber", "y": -90 },
+	"facing=west,left=false,open=true,up=true": { "model": "furniture:blinds_notop", "y": -90 },
+	"facing=west,left=true,open=true,up=true": { "model": "furniture:blinds_notop", "y": -90 },
+	
+	"facing=north,left=false,open=false,up=false": { "model": "furniture:blinds_closed" },
+	"facing=north,left=true,open=false,up=false": { "model": "furniture:blinds_closed_nograbber" },
+	"facing=north,left=false,open=false,up=true": { "model": "furniture:blinds_closed_notop" },
+	"facing=north,left=true,open=false,up=true": { "model": "furniture:blinds_closed_notop" },
+	
+	"facing=east,left=false,open=false,up=false": { "model": "furniture:blinds_closed", "y": 90 },
+	"facing=east,left=true,open=false,up=false": { "model": "furniture:blinds_closed_nograbber", "y": 90 },
+	"facing=east,left=false,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": 90 },
+	"facing=east,left=true,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": 90 },
+	
+	"facing=south,left=false,open=false,up=false": { "model": "furniture:blinds_closed", "y": 180 },
+	"facing=south,left=true,open=false,up=false": { "model": "furniture:blinds_closed_nograbber", "y": 180 },
+	"facing=south,left=false,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": 180 },
+	"facing=south,left=true,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": 180 },
+	
+	"facing=west,left=false,open=false,up=false": { "model": "furniture:blinds_closed", "y": -90 },
+	"facing=west,left=true,open=false,up=false": { "model": "furniture:blinds_closed_nograbber", "y": -90 },
+	"facing=west,left=false,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": -90 },
+	"facing=west,left=true,open=false,up=true": { "model": "furniture:blinds_closed_notop", "y": -90 }
+  }
+}

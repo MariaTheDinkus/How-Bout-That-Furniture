@@ -1,0 +1,37 @@
+{
+	"furniture.doorbell":
+	{
+		"category": "neutral",
+		"sounds":
+		[
+			{
+				"name": "furniture:furniture/doorbell",
+				"stream": false
+			}
+		]
+	},
+	
+	"furniture.light.switch.on":
+	{
+		"category": "neutral",
+		"sounds":
+		[
+			{
+				"name": "furniture:furniture/light_switch_on",
+				"stream": false
+			}
+		]
+	},
+	
+	"furniture.light.switch.off":
+	{
+		"category": "neutral",
+		"sounds":
+		[
+			{
+				"name": "furniture:furniture/light_switch_off",
+				"stream": false
+			}
+		]
+	}
+}

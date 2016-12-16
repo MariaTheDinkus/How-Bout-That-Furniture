@@ -1,0 +1,105 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"textures": {
+        "0": "blocks/planks_birch",
+        "1": "furniture:blocks/smooth_birch",
+        "2": "blocks/wool_colored_white"
+    },
+	"model": "furniture:chair"
+  },
+  "variants": {
+    "normal": [{ "model": "furniture:chair" }],
+    "inventory": [{}],
+    "facing": {
+      "north": { "y": 180 },
+      "south": {  },
+      "west": {"y": 90},
+      "east": {"y": 270},
+      "up": {"x": -90},
+      "down": {"x": 90}
+    },
+	"color": {
+		"0": {
+			"textures": {
+				"2": "blocks/wool_colored_white"
+			}
+		},
+		"1": {
+			"textures": {
+				"2": "blocks/wool_colored_orange"
+			}
+		},
+		"2": {
+			"textures": {
+				"2": "blocks/wool_colored_magenta"
+			}
+		},
+		"3": {
+			"textures": {
+				"2": "blocks/wool_colored_light_blue"
+			}
+		},
+		"4": {
+			"textures": {
+				"2": "blocks/wool_colored_yellow"
+			}
+		},
+		"5": {
+			"textures": {
+				"2": "blocks/wool_colored_lime"
+			}
+		},
+		"6": {
+			"textures": {
+				"2": "blocks/wool_colored_pink"
+			}
+		},
+		"7": {
+			"textures": {
+				"2": "blocks/wool_colored_gray"
+			}
+		},
+		"8": {
+			"textures": {
+				"2": "blocks/wool_colored_silver"
+			}
+		},
+		"9": {
+			"textures": {
+				"2": "blocks/wool_colored_cyan"
+			}
+		},
+		"10": {
+			"textures": {
+				"2": "blocks/wool_colored_purple"
+			}
+		},
+		"11": {
+			"textures": {
+				"2": "blocks/wool_colored_blue"
+			}
+		},
+		"12": {
+			"textures": {
+				"2": "blocks/wool_colored_brown"
+			}
+		},
+		"13": {
+			"textures": {
+				"2": "blocks/wool_colored_green"
+			}
+		},
+		"14": {
+			"textures": {
+				"2": "blocks/wool_colored_red"
+			}
+		},
+		"15": {
+			"textures": {
+				"2": "blocks/wool_colored_black"
+			}
+		}
+	}
+  }
+}
