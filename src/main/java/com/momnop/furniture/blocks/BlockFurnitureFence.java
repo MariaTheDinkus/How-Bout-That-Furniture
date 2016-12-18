@@ -55,7 +55,7 @@ public class BlockFurnitureFence extends BlockFurniture {
 		return state;
 	}
 	
-	public boolean isAdjacentBlockOfMyType(IBlockAccess world, BlockPos position, EnumFacing facing) {
+	public boolean isAdjacentBlockOfMyTypeOrOpaque(IBlockAccess world, BlockPos position, EnumFacing facing) {
 
         assert null != world : "world cannot be null";
         assert null != position : "position cannot be null";
@@ -65,17 +65,23 @@ public class BlockFurnitureFence extends BlockFurniture {
         IBlockState blockState = world.getBlockState(newPosition);
         Block block = (null == blockState) ? null : blockState.getBlock();
         
-        return this == block;
+        if (this == block) {
+        	return true;
+        } else if (blockState.isOpaqueCube()) {
+        	return true;
+        } else {
+        	return false;
+        }
     }
 
     @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos position) {
 
         state = state
-                .withProperty(EAST, this.isAdjacentBlockOfMyType(world, position, EnumFacing.EAST))
-                .withProperty(NORTH, this.isAdjacentBlockOfMyType(world, position, EnumFacing.NORTH))
-                .withProperty(SOUTH, this.isAdjacentBlockOfMyType(world, position, EnumFacing.SOUTH))
-                .withProperty(WEST, this.isAdjacentBlockOfMyType(world, position, EnumFacing.WEST));
+                .withProperty(EAST, this.isAdjacentBlockOfMyTypeOrOpaque(world, position, EnumFacing.EAST))
+                .withProperty(NORTH, this.isAdjacentBlockOfMyTypeOrOpaque(world, position, EnumFacing.NORTH))
+                .withProperty(SOUTH, this.isAdjacentBlockOfMyTypeOrOpaque(world, position, EnumFacing.SOUTH))
+                .withProperty(WEST, this.isAdjacentBlockOfMyTypeOrOpaque(world, position, EnumFacing.WEST));
         
         return state;
     }
