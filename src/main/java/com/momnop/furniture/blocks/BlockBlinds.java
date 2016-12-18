@@ -99,7 +99,7 @@ public class BlockBlinds extends BlockFurnitureFacing {
 	    {
 			BlockPos pos = event.getPos().offset(f);
 			IBlockState state = event.getWorld().getBlockState(pos);
-			if ((state.getBlock() == this) && (state.getValue(FACING) == event.getState().getValue(FACING)))
+			if (event.getState().getBlock() == this && (state.getBlock() == this) && (state.getValue(FACING) == event.getState().getValue(FACING)))
 			{
 				event.getWorld().setBlockState(pos, state.withProperty(OPEN, event.getState().getValue(OPEN)));
 			}
