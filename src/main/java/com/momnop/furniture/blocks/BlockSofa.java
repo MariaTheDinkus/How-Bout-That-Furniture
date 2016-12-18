@@ -25,6 +25,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.momnop.furniture.network.MessageSofaData;
+import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.tiles.TileEntitySofa;
 import com.momnop.furniture.utils.RotationUtils;
 import com.momnop.furniture.utils.SittableUtil;
@@ -64,14 +66,18 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 				if (!playerIn.capabilities.isCreativeMode) {
 					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
-				if (!worldIn.isRemote) {
-					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
-				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
 				}
+				if (!worldIn.isRemote) {
+					PacketDispatcher.sendToAll(new MessageSofaData(pos, sofa.getColor()));
+				}
 				return true;
 			}
+		}
+		
+		if (worldIn.isRemote) {
+			worldIn.setBlockState(pos, state.withProperty(COLOR, state.getValue(COLOR)));
 		}
 		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);
@@ -93,7 +99,7 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 	@Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos position) {
 		state = state
-				.withProperty(COLOR, ((TileEntitySofa) world.getTileEntity(position)).getColor())
+				.withProperty(COLOR, state.getValue(COLOR))
                 .withProperty(RIGHT, this.isAdjacentBlockOfMyType(world, position, state.getValue(FACING).rotateY()))
                 .withProperty(LEFT, this.isAdjacentBlockOfMyType(world, position, state.getValue(FACING).rotateYCCW()));
         

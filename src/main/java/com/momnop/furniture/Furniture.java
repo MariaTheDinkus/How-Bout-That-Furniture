@@ -26,6 +26,7 @@ import com.momnop.furniture.handlers.FurnitureEventHandler;
 import com.momnop.furniture.handlers.RecipeHandler;
 import com.momnop.furniture.handlers.SoundHandler;
 import com.momnop.furniture.info.ModInfo;
+import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.proxies.CommonProxy;
 import com.momnop.furniture.tiles.TileEntityChair;
 import com.momnop.furniture.tiles.TileEntitySofa;
@@ -72,6 +73,8 @@ public class Furniture
     	EntityTools.registerModEntity(new ResourceLocation(ModInfo.MODID, "mountable_block"), EntitySittableBlock.class, "mountable_block", 0, this, 80, 1, false);
     	
     	SoundHandler.registerSounds();
+    	
+    	PacketDispatcher.registerPackets();
     }
     
     @EventHandler

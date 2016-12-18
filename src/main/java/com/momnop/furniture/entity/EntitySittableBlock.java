@@ -89,16 +89,6 @@ public class EntitySittableBlock extends Entity
 		if (this.getEntityWorld().isAirBlock(getPosition())) {
 			setDead();
 		}
-		
-		if (this.isBeingRidden()) {
-			for (Entity entity : this.getPassengers()) {
-				if (entity instanceof EntityPlayer && entity.isSneaking()) {
-					this.setDead();
-					Vec3d position = new Vec3d(entity.posX, entity.posY + 1, entity.posZ);
-					entity.setPositionAndUpdate(position.xCoord, position.yCoord, position.zCoord);
-				}
-			}
-		}
 	}
 
 	@Override

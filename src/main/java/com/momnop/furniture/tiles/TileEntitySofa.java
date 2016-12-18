@@ -9,7 +9,10 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import com.momnop.furniture.blocks.BlockChair;
 import com.momnop.furniture.blocks.BlockSofa;
+import com.momnop.furniture.network.MessageSofaData;
+import com.momnop.furniture.network.PacketDispatcher;
 
 public class TileEntitySofa extends TileEntity implements ITickable {
 	private int color = 0;
@@ -25,9 +28,10 @@ public class TileEntitySofa extends TileEntity implements ITickable {
 	
 	@Override
 	public void update() {
-		if (!this.getWorld().isRemote && this.getWorld().getBlockState(pos).getBlock() instanceof BlockSofa) {
-			BlockSofa sofa = (BlockSofa) this.getWorld().getBlockState(pos).getBlock();
-			sofa.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), this.getPos());
+		if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockSofa) {
+			if (!this.getWorld().isRemote) {
+				PacketDispatcher.sendToAll(new MessageSofaData(pos, getColor()));
+			}
 		}
 	}
 	

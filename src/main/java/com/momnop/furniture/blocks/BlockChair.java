@@ -24,6 +24,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.momnop.furniture.network.MessageChairData;
+import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.tiles.TileEntityChair;
 import com.momnop.furniture.tiles.TileEntitySofa;
 import com.momnop.furniture.utils.RotationUtils;
@@ -71,7 +73,7 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
 				if (!worldIn.isRemote) {
-					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);
+					PacketDispatcher.sendToAll(new MessageChairData(pos, chair.getColor()));
 				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);

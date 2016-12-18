@@ -24,11 +24,10 @@ public class TileEntityChair extends TileEntity implements ITickable {
 	}
 	
 	public void update() {
-		if (!this.getWorld().isRemote) {
-			if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockChair) {
-				BlockChair chair = (BlockChair) this.getWorld().getBlockState(pos).getBlock();
-				chair.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), this.getPos());
-			}
+		if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockChair) {
+			BlockChair chair = (BlockChair) this.getWorld().getBlockState(pos).getBlock();
+			chair.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), this.getPos());
+//			this.getWorld().setBlockState(pos, this.getWorld().getBlockState(pos).withProperty(BlockChair.COLOR, getColor()));
 		}
 	};
 	
