@@ -70,6 +70,9 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 				if (!playerIn.capabilities.isCreativeMode) {
 					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
+				if (!worldIn.isRemote) {
+					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);
+				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);
 				}

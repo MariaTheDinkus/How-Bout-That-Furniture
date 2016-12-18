@@ -100,7 +100,7 @@ public class BlockDoorbell extends BlockFurnitureFacing {
 		
 			worldIn.playSound(null, pos, SoundHandler.doorbell, SoundCategory.BLOCKS, 1, 1F);
 			
-			worldIn.scheduleUpdate(pos, this, 25);
+			worldIn.scheduleUpdate(pos, this, 15);
 			return true;
 		}
 		return false;

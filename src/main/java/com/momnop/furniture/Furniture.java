@@ -1,8 +1,10 @@
 package com.momnop.furniture;
 
 import mcjty.lib.compat.CompatCreativeTabs;
+import mcjty.lib.tools.EntityTools;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -19,6 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.momnop.furniture.blocks.FurnitureBlocks;
 import com.momnop.furniture.client.render.RenderRegistry;
+import com.momnop.furniture.entity.EntitySittableBlock;
 import com.momnop.furniture.handlers.FurnitureEventHandler;
 import com.momnop.furniture.handlers.RecipeHandler;
 import com.momnop.furniture.handlers.SoundHandler;
@@ -65,6 +68,8 @@ public class Furniture
     	if (event.getSide() == Side.CLIENT) {
     		RenderRegistry.registerRenderers();
     	}
+    	
+    	EntityTools.registerModEntity(new ResourceLocation(ModInfo.MODID, "mountable_block"), EntitySittableBlock.class, "mountable_block", 0, this, 80, 1, false);
     	
     	SoundHandler.registerSounds();
     }
