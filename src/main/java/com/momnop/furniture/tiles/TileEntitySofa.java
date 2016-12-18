@@ -32,6 +32,8 @@ public class TileEntitySofa extends TileEntity implements ITickable {
 			if (!this.getWorld().isRemote) {
 				PacketDispatcher.sendToAll(new MessageSofaData(pos, getColor()));
 			}
+			BlockSofa sofa = (BlockSofa) this.getWorld().getBlockState(pos).getBlock();
+			this.getWorld().setBlockState(pos, sofa.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), pos));
 		}
 	}
 	

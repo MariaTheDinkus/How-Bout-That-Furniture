@@ -53,7 +53,7 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 	@Override
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos position) {
 		state = state
-                .withProperty(COLOR, ((TileEntityChair) world.getTileEntity(position)).getColor());
+                .withProperty(COLOR, state.getValue(COLOR));
         
         return state;
     }
@@ -71,9 +71,6 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 				chair.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
 					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
-				}
-				if (!worldIn.isRemote) {
-					PacketDispatcher.sendToAll(new MessageChairData(pos, chair.getColor()));
 				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);

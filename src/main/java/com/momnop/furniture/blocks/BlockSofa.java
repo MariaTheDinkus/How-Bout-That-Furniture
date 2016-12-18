@@ -69,15 +69,8 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
 				}
-				if (!worldIn.isRemote) {
-					PacketDispatcher.sendToAll(new MessageSofaData(pos, sofa.getColor()));
-				}
 				return true;
 			}
-		}
-		
-		if (worldIn.isRemote) {
-			worldIn.setBlockState(pos, state.withProperty(COLOR, state.getValue(COLOR)));
 		}
 		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);
