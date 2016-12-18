@@ -1,6 +1,6 @@
 package com.momnop.furniture.blocks;
 
-import net.minecraft.block.ITileEntityProvider;
+import mcjty.lib.tools.ItemStackTools;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -10,7 +10,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -51,14 +50,14 @@ public class BlockStool extends BlockFurniture {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
+	public boolean clOnBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if (playerIn.getHeldItem(hand) != ItemStack.field_190927_a) {
+		if (playerIn.getHeldItem(hand) != ItemStackTools.getEmptyStack()) {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (heldItem.getItem() instanceof ItemDye && state.getValue(COLOR) != 15 - heldItem.getItemDamage()) {
 				if (!playerIn.capabilities.isCreativeMode) {
-					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
 				worldIn.setBlockState(pos, state.withProperty(COLOR, 15 - heldItem.getItemDamage()), 2);
 				return true;

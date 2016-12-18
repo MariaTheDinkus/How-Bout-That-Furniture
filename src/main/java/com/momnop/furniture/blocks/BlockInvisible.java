@@ -2,6 +2,7 @@ package com.momnop.furniture.blocks;
 
 import java.util.Random;
 
+import mcjty.lib.tools.ItemStackTools;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockStateContainer;
@@ -11,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -90,12 +92,8 @@ public class BlockInvisible extends BlockFurnitureFacing {
 		}
 	}
 	
-	/**
-	 * Called by ItemBlocks just before a block is actually set in the world, to
-	 * allow for adjustments to the IBlockstate
-	 */
 	@Override
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos,
+	protected IBlockState clGetStateForPlacement(World world, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
 			EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING,
@@ -109,6 +107,6 @@ public class BlockInvisible extends BlockFurnitureFacing {
 	
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		return droppedItem.func_190916_E();
+		return ItemStackTools.getStackSize(droppedItem);
 	}
 }

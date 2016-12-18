@@ -8,11 +8,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 import com.momnop.furniture.blocks.BlockSofa;
-import com.momnop.furniture.network.MessageSofaData;
-import com.momnop.furniture.network.PacketDispatcher;
 
 public class TileEntitySofa extends TileEntity implements ITickable {
 	private int color = 0;
@@ -28,28 +25,9 @@ public class TileEntitySofa extends TileEntity implements ITickable {
 	
 	@Override
 	public void update() {
-		IBlockState state = this.getWorld().getBlockState(pos);
-		
-		if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockSofa) {
-			if (!this.getWorld().isRemote) {
-				PacketDispatcher.sendToAll(new MessageSofaData(this.getPos(), color, state.getValue(BlockSofa.LEFT), state.getValue(BlockSofa.RIGHT)));
-			}
-			
-			if (this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())) != null && this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())).getBlock() instanceof BlockSofa && this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())).getValue(BlockSofa.FACING) == state.getValue(BlockSofa.FACING)) {
-				this.getWorld().setBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec()), this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())).withProperty(BlockSofa.RIGHT, true), 2);
-			}
-			
-			if (this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())) != null && this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())).getBlock() instanceof BlockSofa && this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())).getValue(BlockSofa.FACING) == state.getValue(BlockSofa.FACING)) {
-				this.getWorld().setBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec()), this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())).withProperty(BlockSofa.LEFT, true), 2);
-			}
-			
-			if (!(this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())).getBlock() instanceof BlockSofa) && !(this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())).getBlock() instanceof BlockSofa) || this.getWorld().isAirBlock(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())) && this.getWorld().isAirBlock(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec()))){
-				this.getWorld().setBlockState(pos, state.withProperty(BlockSofa.LEFT, false).withProperty(BlockSofa.RIGHT, false), 2);
-			} else if (!(this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec())).getBlock() instanceof BlockSofa) || this.getWorld().isAirBlock(pos.add(state.getValue(BlockSofa.FACING).rotateY().getDirectionVec()))){
-				this.getWorld().setBlockState(pos, state.withProperty(BlockSofa.RIGHT, false), 2);
-			} else if (!(this.getWorld().getBlockState(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec())).getBlock() instanceof BlockSofa) || this.getWorld().isAirBlock(pos.add(state.getValue(BlockSofa.FACING).rotateYCCW().getDirectionVec()))){
-				this.getWorld().setBlockState(pos, state.withProperty(BlockSofa.LEFT, false), 2);
-			}
+		if (!this.getWorld().isRemote && this.getWorld().getBlockState(pos).getBlock() instanceof BlockSofa) {
+			BlockSofa sofa = (BlockSofa) this.getWorld().getBlockState(pos).getBlock();
+			sofa.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), this.getPos());
 		}
 	}
 	

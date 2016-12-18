@@ -3,6 +3,7 @@ package com.momnop.furniture.blocks;
 import java.util.List;
 import java.util.Random;
 
+import mcjty.lib.tools.WorldTools;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLever;
 import net.minecraft.block.ITileEntityProvider;
@@ -116,7 +117,6 @@ public class BlockLightSwitch extends BlockFurnitureFacing {
 				break;
 			}
 		}
-		System.out.println(worldIn.getBlockState(pos.offset(side.getOpposite())).getBlock().getLocalizedName());
 		IBlockState state = worldIn.getBlockState(pos.offset(side.getOpposite()));
 		if (place == true && state.isFullBlock() && state.isOpaqueCube()) {
 			return true;
@@ -125,8 +125,8 @@ public class BlockLightSwitch extends BlockFurnitureFacing {
 	}
     
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos,
-    		Block blockIn, BlockPos p_189540_5_) {
+    protected void clOnNeighborChanged(IBlockState state, World worldIn,
+    		BlockPos pos, Block blockIn) {
     	if (!worldIn.getBlockState(pos.offset(state.getValue(FACING))).isFullBlock() && !worldIn.getBlockState(pos.offset(state.getValue(FACING))).isOpaqueCube()) {
     		this.dropBlockAsItem(worldIn, pos, state, 0);
     		worldIn.setBlockToAir(pos);
@@ -135,12 +135,12 @@ public class BlockLightSwitch extends BlockFurnitureFacing {
     
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-    	worldIn.notifyNeighborsOfStateChange(pos, this, false);
-        worldIn.notifyNeighborsOfStateChange(pos.offset(state.getValue(FACING)), this, false);
+    	WorldTools.notifyNeighborsOfStateChange(worldIn, pos, this);
+        WorldTools.notifyNeighborsOfStateChange(worldIn, pos.offset(state.getValue(FACING)), this);
     }
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
+	public boolean clOnBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing heldItem, float side, float hitX, float hitY) {
 		worldIn.setBlockState(pos, state.withProperty(POWERED, !state.getValue(POWERED)));
@@ -151,8 +151,8 @@ public class BlockLightSwitch extends BlockFurnitureFacing {
 			worldIn.playSound(null, pos, SoundHandler.lightSwitchOn, SoundCategory.BLOCKS, 1, 1);
 		}
 		
-		worldIn.notifyNeighborsOfStateChange(pos, this, false);
-        worldIn.notifyNeighborsOfStateChange(pos.offset(state.getValue(FACING)), this, false);
+		WorldTools.notifyNeighborsOfStateChange(worldIn, pos, this);
+        WorldTools.notifyNeighborsOfStateChange(worldIn, pos.offset(state.getValue(FACING)), this);
 			
 		return true;
 	}
@@ -168,9 +168,9 @@ public class BlockLightSwitch extends BlockFurnitureFacing {
 	}
 	
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos,
+	public IBlockState clGetStateForPlacement(World world, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer, EnumHand hand) {
+			EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING,
 				facing.getOpposite());
 	}

@@ -2,6 +2,7 @@ package com.momnop.furniture.blocks;
 
 import java.util.List;
 
+import mcjty.lib.tools.ItemStackTools;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -48,27 +49,32 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
+    public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos position) {
+		state = state
+                .withProperty(COLOR, ((TileEntityChair) world.getTileEntity(position)).getColor());
+        
+        return state;
+    }
+	
+	@Override
+	public boolean clOnBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntityChair chair = (TileEntityChair) worldIn.getTileEntity(pos);
 		
-		if (playerIn.getHeldItem(hand) != ItemStack.field_190927_a) {
+		if (playerIn.getHeldItem(hand) != ItemStackTools.getEmptyStack()) {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
-			if (heldItem.getItem() instanceof ItemDye && state.getValue(COLOR) != 15 - heldItem.getItemDamage()) {
+			if (heldItem.getItem() instanceof ItemDye && chair.getColor() != 15 - heldItem.getItemDamage()) {
+				System.out.println(chair.getColor());
 				chair.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
-					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
-				if (!worldIn.isRemote) {
-					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()));
+				if (worldIn.isRemote) {
+					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);
 				}
 				return true;
 			}
-		}
-		
-		if (!worldIn.isRemote) {
-			worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()));
 		}
 		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);

@@ -27,19 +27,6 @@ public class FurnitureBlocks
     public static void loadBlocks()
     {
     	sofa = new BlockSofa(Material.CLOTH, 0.8F, SoundType.CLOTH, "sofa");
-    	tableOak = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_oak");
-    	tableSpruce = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_spruce");
-    	tableBirch = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_birch");
-    	tableJungle = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_jungle");
-    	tableAcacia = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_acacia");
-    	tableDarkOak = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_dark_oak");
-    	
-    	coffeeTableOak = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_oak");
-    	coffeeTableSpruce = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_spruce");
-    	coffeeTableBirch = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_birch");
-    	coffeeTableJungle = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_jungle");
-    	coffeeTableAcacia = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_acacia");
-    	coffeeTableDarkOak = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_dark_oak");
     	
     	chairOak = new BlockChair(Material.WOOD, 2.0F, SoundType.WOOD, "chair_oak");
     	chairSpruce = new BlockChair(Material.WOOD, 2.0F, SoundType.WOOD, "chair_spruce");
@@ -55,6 +42,20 @@ public class FurnitureBlocks
     	stoolAcacia = new BlockStool(Material.WOOD, 2.0F, SoundType.WOOD, "stool_acacia");
     	stoolDarkOak = new BlockStool(Material.WOOD, 2.0F, SoundType.WOOD, "stool_dark_oak");
     	
+    	tableOak = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_oak");
+    	tableSpruce = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_spruce");
+    	tableBirch = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_birch");
+    	tableJungle = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_jungle");
+    	tableAcacia = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_acacia");
+    	tableDarkOak = new BlockTable(Material.WOOD, 2.0F, SoundType.WOOD, "table_dark_oak");
+    	
+    	coffeeTableOak = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_oak");
+    	coffeeTableSpruce = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_spruce");
+    	coffeeTableBirch = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_birch");
+    	coffeeTableJungle = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_jungle");
+    	coffeeTableAcacia = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_acacia");
+    	coffeeTableDarkOak = new BlockCoffeeTable(Material.WOOD, 2.0F, SoundType.WOOD, "coffee_table_dark_oak");
+    	
     	blinds = new BlockBlinds(Material.WOOD, 2.0F, SoundType.WOOD, "blinds");
     	
     	doorbell = new BlockDoorbell(Material.WOOD, 2.0F, SoundType.WOOD, "doorbell");
@@ -64,9 +65,9 @@ public class FurnitureBlocks
     	
     	rockPath = new BlockRockPath(Material.ROCK, 1.5F, SoundType.STONE, "rock_path");
     	
-    	desk = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk");
-    	deskInvisible1 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_1");
-    	deskInvisible2 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_2");
+    	//desk = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk");
+    	//deskInvisible1 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_1");
+    	//deskInvisible2 = new BlockDesk(Material.WOOD, 2.0F, SoundType.WOOD, "desk_invisible_2");
     }
     
     public static void register(Block b) {

@@ -66,9 +66,9 @@ public class BlockRockPath extends BlockFurniture {
 	}
 	
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos,
+	public IBlockState clGetStateForPlacement(World world, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer, EnumHand hand) {
+			EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(RANDOM, new Random().nextInt(7));
 	}
 	

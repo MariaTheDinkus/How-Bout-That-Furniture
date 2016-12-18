@@ -2,6 +2,7 @@ package com.momnop.furniture.utils;
 
 import java.util.List;
 
+import mcjty.lib.tools.WorldTools;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -16,7 +17,7 @@ public class SittableUtil {
 		if (!checkForExistingEntity(par1World, x, y, z, par5EntityPlayer))
 		{
 			EntitySittableBlock nemb = new EntitySittableBlock(par1World, x, y, z, par6);
-			par1World.spawnEntityInWorld(nemb);
+			WorldTools.spawnEntity(par1World, nemb);
 			par5EntityPlayer.startRiding(nemb);
 		}
 		return true;
@@ -28,7 +29,7 @@ public class SittableUtil {
 		if (!checkForExistingEntity(par1World, x, y, z, par5EntityPlayer) && !par5EntityPlayer.isRiding())
 		{
 			EntitySittableBlock nemb = new EntitySittableBlock(par1World, x, y, z, par6, metadata, offset);
-			par1World.spawnEntityInWorld(nemb);
+			WorldTools.spawnEntity(par1World, nemb);
 			par5EntityPlayer.startRiding(nemb);
 		}
 		return true;

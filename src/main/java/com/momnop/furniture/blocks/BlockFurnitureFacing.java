@@ -51,9 +51,9 @@ public class BlockFurnitureFacing extends BlockFurniture {
 	}
 	
 	@Override
-	public IBlockState getStateForPlacement(World world, BlockPos pos,
+	protected IBlockState clGetStateForPlacement(World worldIn, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer, EnumHand hand) {
+			EntityLivingBase placer) {
 		if (placer.isSneaking()) {
 			return this.getDefaultState().withProperty(FACING,
 					placer.getHorizontalFacing());

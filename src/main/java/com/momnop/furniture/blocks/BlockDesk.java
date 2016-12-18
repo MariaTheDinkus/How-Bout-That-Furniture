@@ -50,9 +50,9 @@ public class BlockDesk extends BlockFurnitureFacing {
 	}
 	
 	@Override
-	public IBlockState getStateForPlacement(World worldIn, BlockPos pos,
+	public IBlockState clGetStateForPlacement(World worldIn, BlockPos pos,
 			EnumFacing facing, float hitX, float hitY, float hitZ, int meta,
-			EntityLivingBase placer, EnumHand hand) {
+			EntityLivingBase placer) {
 		if (placer.getHorizontalFacing() == EnumFacing.NORTH || placer.getHorizontalFacing() == EnumFacing.SOUTH) {
 			worldIn.setBlockState(pos.add(-1, 0, 0), FurnitureBlocks.deskInvisible1.getDefaultState().withProperty(BlockInvisible.FACING, placer.getHorizontalFacing().getOpposite()));
 			worldIn.setBlockState(pos.add(1, 0, 0), FurnitureBlocks.deskInvisible2.getDefaultState().withProperty(BlockInvisible.FACING, placer.getHorizontalFacing().getOpposite()));

@@ -2,6 +2,8 @@ package com.momnop.furniture.blocks;
 
 import java.util.List;
 
+import mcjty.lib.tools.ItemStackTools;
+import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -50,48 +52,50 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos,
+	public boolean clOnBlockActivated(World worldIn, BlockPos pos,
 			IBlockState state, EntityPlayer playerIn, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntitySofa sofa = (TileEntitySofa) worldIn.getTileEntity(pos);
 		
-		if (playerIn.getHeldItem(hand) != ItemStack.field_190927_a) {
+		if (playerIn.getHeldItem(hand) != ItemStackTools.getEmptyStack()) {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
-			if (heldItem.getItem() instanceof ItemDye && state.getValue(COLOR) != 15 - heldItem.getItemDamage()) {
+			if (heldItem.getItem() instanceof ItemDye && sofa.getColor() != 15 - heldItem.getItemDamage()) {
 				sofa.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
-					playerIn.getHeldItem(hand).func_190920_e(playerIn.getHeldItem(hand).func_190916_E() - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
 				}
-				if (!worldIn.isRemote) {
+				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
 				}
 				return true;
 			}
 		}
 		
-		if (!worldIn.isRemote) {
-			worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));
-		}
-		
 		return SittableUtil.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 0.351);
 	}
 	
+	public boolean isAdjacentBlockOfMyType(IBlockAccess world, BlockPos position, EnumFacing facing) {
+
+        assert null != world : "world cannot be null";
+        assert null != position : "position cannot be null";
+        assert null != this : "type cannot be null";
+
+        BlockPos newPosition = position.offset(facing);
+        IBlockState blockState = world.getBlockState(newPosition);
+        Block block = (null == blockState) ? null : blockState.getBlock();
+        
+        return this == block;
+    }
+	
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn,
-			BlockPos pos) {
-		IBlockState newState = state;
-		
-		TileEntitySofa sofa = (TileEntitySofa) worldIn.getTileEntity(pos);
-		
-		if (worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())) != null && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())).getBlock() instanceof BlockSofa && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateY().getDirectionVec())).getValue(FACING) == state.getValue(FACING)) {
-			newState = newState.withProperty(RIGHT, true);
-		}
-		
-		if (worldIn.getBlockState(pos.add(state.getValue(FACING).rotateYCCW().getDirectionVec())) != null && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateYCCW().getDirectionVec())).getBlock() instanceof BlockSofa && worldIn.getBlockState(pos.add(state.getValue(FACING).rotateYCCW().getDirectionVec())).getValue(FACING) == state.getValue(FACING)) {
-			newState = newState.withProperty(LEFT, true);
-		}
-		return newState;
-	}
+    public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos position) {
+		state = state
+				.withProperty(COLOR, ((TileEntitySofa) world.getTileEntity(position)).getColor())
+                .withProperty(RIGHT, this.isAdjacentBlockOfMyType(world, position, state.getValue(FACING).rotateY()))
+                .withProperty(LEFT, this.isAdjacentBlockOfMyType(world, position, state.getValue(FACING).rotateYCCW()));
+        
+        return state;
+    }
 	
 	@Override
 	public void addCollisionBoxToList(IBlockState state,
@@ -103,19 +107,9 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 		AxisAlignedBB side2 = new AxisAlignedBB(15F / 16F, 7F / 16F, 0, 1 + (3F / 16F), 12F / 16F, 1);
 		
 		top = RotationUtils.getRotatedAABB(top, state.getValue(FACING));
-		side1 = RotationUtils.getRotatedAABB(side1, state.getValue(FACING));
-		side2 = RotationUtils.getRotatedAABB(side2, state.getValue(FACING));
 		
 		addCollisionBox(bottom, pos, collidingBoxes, entityBox);
 		addCollisionBox(top, pos, collidingBoxes, entityBox);
-		
-		if (((Boolean)state.getValue(LEFT)).booleanValue() == false) {
-			addCollisionBox(side1, pos, collidingBoxes, entityBox);
-		}
-		
-		if (((Boolean)state.getValue(RIGHT)).booleanValue() == false) {
-			addCollisionBox(side2, pos, collidingBoxes, entityBox);
-		}
 	}
 
 	@Override

@@ -1,21 +1,15 @@
 package com.momnop.furniture.tiles;
 
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.momnop.furniture.blocks.BlockChair;
-import com.momnop.furniture.blocks.BlockSofa;
-import com.momnop.furniture.network.MessageChairData;
-import com.momnop.furniture.network.MessageSofaData;
-import com.momnop.furniture.network.PacketDispatcher;
 
 public class TileEntityChair extends TileEntity implements ITickable {
 	private int color = 0;
@@ -29,15 +23,14 @@ public class TileEntityChair extends TileEntity implements ITickable {
 		return color;
 	}
 	
-	@Override
 	public void update() {
-		if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockChair) {
-			if (!this.getWorld().isRemote) {
-				IBlockState state = this.getWorld().getBlockState(pos);
-				PacketDispatcher.sendToAll(new MessageChairData(this.getPos(), color));
+		if (!this.getWorld().isRemote) {
+			if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockChair) {
+				BlockChair chair = (BlockChair) this.getWorld().getBlockState(pos).getBlock();
+				chair.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), this.getPos());
 			}
 		}
-	}
+	};
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
