@@ -7,6 +7,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -29,8 +30,8 @@ public class BlockBlinds extends BlockFurnitureFacing {
 	public static final PropertyBool LEFT = PropertyBool.create("left");
 	public static final PropertyBool OPEN = PropertyBool.create("open");
 
-	public BlockBlinds(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+	public BlockBlinds(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(FACING, EnumFacing.NORTH).withProperty(UP, false).withProperty(LEFT, false).withProperty(OPEN, true));
 		MinecraftForge.EVENT_BUS.register(this);
 	}

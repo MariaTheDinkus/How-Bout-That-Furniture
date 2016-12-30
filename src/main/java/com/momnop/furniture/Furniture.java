@@ -28,10 +28,14 @@ import com.momnop.furniture.handlers.SoundHandler;
 import com.momnop.furniture.info.ModInfo;
 import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.proxies.CommonProxy;
+import com.momnop.furniture.tiles.TileEntityCabinet;
 import com.momnop.furniture.tiles.TileEntityChair;
+import com.momnop.furniture.tiles.TileEntityFan;
+import com.momnop.furniture.tiles.TileEntityRefrigerator;
+import com.momnop.furniture.tiles.TileEntityRefrigeratorTop;
 import com.momnop.furniture.tiles.TileEntitySofa;
 
-@Mod(name = ModInfo.NAME, modid = ModInfo.MODID, version = ModInfo.VERSION, acceptedMinecraftVersions = "[1.9,1.12)")
+@Mod(name = ModInfo.NAME, modid = ModInfo.MODID, version = ModInfo.VERSION, acceptedMinecraftVersions = "[1.9,1.12)", dependencies = "required-after:compatlayer")
 public class Furniture
 {
     @SidedProxy(clientSide = "com.momnop.furniture.proxies.ClientProxy", serverSide = "com.momnop.furniture.proxies.CommonProxy")
@@ -40,11 +44,35 @@ public class Furniture
     @Instance(value = ModInfo.MODID)
     public static Furniture INSTANCE;
     
-    public static CreativeTabs tabFurniture = new CompatCreativeTabs(ModInfo.MODID) {
+    public static CreativeTabs tabGeneral = new CompatCreativeTabs(ModInfo.MODID + "_general") {
+        @Override
+        @SideOnly(Side.CLIENT)
+        public Item getItem() {
+            return Item.getItemFromBlock(FurnitureBlocks.tableOak);
+        }
+    };
+    
+    public static CreativeTabs tabLiving = new CompatCreativeTabs(ModInfo.MODID + "_living") {
         @Override
         @SideOnly(Side.CLIENT)
         public Item getItem() {
             return Item.getItemFromBlock(FurnitureBlocks.sofa);
+        }
+    };
+    
+    public static CreativeTabs tabKitchen = new CompatCreativeTabs(ModInfo.MODID + "_kitchen") {
+        @Override
+        @SideOnly(Side.CLIENT)
+        public Item getItem() {
+            return Item.getItemFromBlock(FurnitureBlocks.refrigerator);
+        }
+    };
+    
+    public static CreativeTabs tabOutdoors = new CompatCreativeTabs(ModInfo.MODID + "_outdoors") {
+        @Override
+        @SideOnly(Side.CLIENT)
+        public Item getItem() {
+            return Item.getItemFromBlock(FurnitureBlocks.fancyFence);
         }
     };
     
@@ -66,9 +94,15 @@ public class Furniture
     	MinecraftForge.EVENT_BUS.register(new FurnitureEventHandler());
     	GameRegistry.registerTileEntity(TileEntitySofa.class, "tileEntitySofa");
     	GameRegistry.registerTileEntity(TileEntityChair.class, "tileEntityChair");
+    	GameRegistry.registerTileEntity(TileEntityFan.class, "tileEntityFan");
+    	GameRegistry.registerTileEntity(TileEntityRefrigerator.class, "tileEntityRefrigerator");
+    	GameRegistry.registerTileEntity(TileEntityRefrigeratorTop.class, "tileEntityRefrigeratorTop");
+    	GameRegistry.registerTileEntity(TileEntityCabinet.class, "tileEntityCabinet");
     	if (event.getSide() == Side.CLIENT) {
     		RenderRegistry.registerRenderers();
     	}
+    	
+    	proxy.initRenders();
     	
     	EntityTools.registerModEntity(new ResourceLocation(ModInfo.MODID, "mountable_block"), EntitySittableBlock.class, "mountable_block", 0, this, 80, 1, false);
     	

@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"textures": {
+        "0": "furniture:blocks/borderless_iron",
+        "1": "furniture:blocks/handle",
+		"particle": "#0"
+    },
+	"model": "furniture:refrigerator"
+  },
+  "variants": {
+    "normal": [{ "model": "furniture:refrigerator" }],
+    "inventory": [{ "y": 180 }],
+    "facing": {
+      "north": {},
+      "south": {"y": 180},
+      "west": {"y": 270},
+      "east": {"y": 90},
+      "up": {"x": -90},
+      "down": {"x": 90}
+    }
+  }
+}

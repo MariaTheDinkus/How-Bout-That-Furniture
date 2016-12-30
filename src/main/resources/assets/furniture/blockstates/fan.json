@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"textures": {
+		"0": "blocks/log_oak",
+		"1": "furniture:blocks/smooth_oak",
+		"particle": "#1"
+	},
+	"model": "furniture:fan_holder"
+  },
+  "variants": {
+    "normal": [{ "model": "furniture:fan_holder" }],
+    "inventory": [{ "submodel": "furniture:fan_blades" }],
+	"powered": {
+		"true": {
+		
+		},
+		"false": {
+			"submodel": "furniture:fan_blades"
+		}
+	}
+  }
+}

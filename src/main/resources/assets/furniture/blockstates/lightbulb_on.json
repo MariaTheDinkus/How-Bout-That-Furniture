@@ -1,0 +1,15 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"0": "furniture:blocks/log_oak_planks_big_oak",
+			"1": "furniture:blocks/light_on",
+			"particle": "#1"
+		},
+		"model": "furniture:lightbulb"
+	},
+	"variants": {
+		"normal": { "model": "furniture:lightbulb" },
+		"inventory": [{}]
+    }
+}

@@ -1,5 +1,8 @@
 ﻿# CREATIVE TAB
-itemGroup.furniture=How 'Bout That Furniture
+itemGroup.furniture_general=HBTF: General
+itemGroup.furniture_living=HBTF: Living Room
+itemGroup.furniture_kitchen=HBTF: Kitchen
+itemGroup.furniture_outdoors=HBTF: Outdoors
 
 # BLOCKS
 tile.sofa.name=Sofa
@@ -32,3 +35,32 @@ tile.doorbell.name=Doorbell
 tile.light_switch.name=Light Switch
 tile.fancy_fence.name=Picket Fence
 tile.rock_path.name=Rock Path
+tile.dark_oak_oak_plank_log.name=Dark-Oak Oak Planklog
+tile.refrigerator.name=Refrigerator
+tile.refrigerator_invisible.name=Refrigerator
+tile.sink.name=Sink
+tile.counter_stone.name=Wooden Stone Counter
+tile.counter_granite.name=Wooden Granite Counter
+tile.counter_diorite.name=Wooden Diorite Counter
+tile.counter_andesite.name=Wooden Andesite Counter
+tile.counter_stone_quartz.name=Quartz Stone Counter
+tile.counter_granite_quartz.name=Quartz Granite Counter
+tile.counter_diorite_quartz.name=Quartz Diorite Counter
+tile.counter_andesite_quartz.name=Quartz Andesite Counter
+tile.counter_sink_stone.name=Wooden Stone Counter (Sink)
+tile.counter_sink_granite.name=Wooden Granite Counter (Sink)
+tile.counter_sink_diorite.name=Wooden Diorite Counter (Sink)
+tile.counter_sink_andesite.name=Wooden Andesite Counter (Sink)
+tile.counter_sink_stone_quartz.name=Quartz Stone Counter (Sink)
+tile.counter_sink_granite_quartz.name=Quartz Granite Counter (Sink)
+tile.counter_sink_diorite_quartz.name=Quartz Diorite Counter (Sink)
+tile.counter_sink_andesite_quartz.name=Quartz Andesite Counter (Sink)
+tile.fan.name=Ceiling Fan
+tile.lightbulb_off.name=Lightbulb
+tile.fan_light_off.name=Ceiling Fan (Light)
+tile.cabinet_oak.name=Oak Cabinet
+tile.cabinet_spruce.name=Spruce Cabinet
+tile.cabinet_birch.name=Birch Cabinet
+tile.cabinet_jungle.name=Jungle Cabinet
+tile.cabinet_acacia.name=Acacia Cabinet
+tile.cabinet_dark_oak.name=Dark Oak Cabinet

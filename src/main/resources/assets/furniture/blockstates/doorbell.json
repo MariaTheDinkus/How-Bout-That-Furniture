@@ -1,6 +1,9 @@
 {
   "forge_marker": 1,
   "defaults": {
+	"textures": {
+		"particle": "blocks/quartz_block_side"
+	},
 	"model": "furniture:doorbell"
   },
   "variants": {

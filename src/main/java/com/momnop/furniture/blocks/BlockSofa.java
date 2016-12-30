@@ -12,6 +12,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
@@ -38,8 +39,8 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 	public static final PropertyBool RIGHT = PropertyBool.create("right");
 	public static final PropertyBool CORNER = PropertyBool.create("corner");
 
-	public BlockSofa(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+	public BlockSofa(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(COLOR, 0).withProperty(LEFT, false).withProperty(RIGHT, false).withProperty(CORNER, false));
 	}
 	
@@ -64,7 +65,7 @@ public class BlockSofa extends BlockFurnitureFacingColliding implements ITileEnt
 			if (heldItem.getItem() instanceof ItemDye && sofa.getColor() != 15 - heldItem.getItemDamage()) {
 				sofa.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
-					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), -1);
 				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, sofa.getColor()));

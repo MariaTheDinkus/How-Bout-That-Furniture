@@ -11,6 +11,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -34,8 +35,8 @@ public class BlockFurnitureFence extends BlockFurniture {
     public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.5D, 0.375D);
     public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.625D, 0.0D, 0.375D, 1.0D, 1.5D, 0.625D);
 
-    public BlockFurnitureFence(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+    public BlockFurnitureFence(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
 	}
 	

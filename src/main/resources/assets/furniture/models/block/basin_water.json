@@ -1,0 +1,38 @@
+{
+    "parent": "block/block",
+	"display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+        },
+        "head": {
+            "rotation": [ 0, -90, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [ 75, -135, 0 ],
+            "translation": [ 0, 2.5, 0],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "textures": {
+        "4": "blocks/water_still"
+    },
+    "elements": [
+        {
+            "name": "Water",
+            "from": [ 3.0, 12.0, 3.0 ], 
+            "to": [ 13.0, 15.0, 11.0 ], 
+            "faces": {
+                "north": { "texture": "#4", "uv": [ 1.0, 2.0, 11.0, 6.0 ] },
+                "east": { "texture": "#4", "uv": [ 1.0, 2.0, 9.0, 6.0 ] },
+                "south": { "texture": "#4", "uv": [ 1.0, 2.0, 11.0, 6.0 ] },
+                "west": { "texture": "#4", "uv": [ 1.0, 2.0, 9.0, 6.0 ] },
+                "up": { "texture": "#4", "uv": [ 1.0, 1.0, 11.0, 9.0 ] },
+                "down": { "texture": "#4", "uv": [ 1.0, 1.0, 11.0, 9.0 ] }
+            }
+        }
+    ]
+}

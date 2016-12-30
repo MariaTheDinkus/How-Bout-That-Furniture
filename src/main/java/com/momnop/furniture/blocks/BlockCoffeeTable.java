@@ -13,6 +13,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
@@ -37,8 +38,8 @@ public class BlockCoffeeTable extends BlockFurniture {
 	public static final PropertyBool SOUTH = PropertyBool.create("south");
 	public static final PropertyBool WEST = PropertyBool.create("west");
 
-	public BlockCoffeeTable(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+	public BlockCoffeeTable(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(NORTH, false).withProperty(EAST, false).withProperty(SOUTH, false).withProperty(WEST, false));
 	}
 	

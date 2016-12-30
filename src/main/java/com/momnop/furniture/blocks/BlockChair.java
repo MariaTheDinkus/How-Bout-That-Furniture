@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
@@ -35,8 +36,8 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 	
 	public static final PropertyInteger COLOR = PropertyInteger.create("color", 0, 15);
 
-	public BlockChair(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+	public BlockChair(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(COLOR, 0));
 	}
 	
@@ -70,7 +71,7 @@ public class BlockChair extends BlockFurnitureFacingColliding implements ITileEn
 				System.out.println(chair.getColor());
 				chair.setColor(heldItem.getItemDamage());
 				if (!playerIn.capabilities.isCreativeMode) {
-					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), -1);
 				}
 				if (worldIn.isRemote) {
 					worldIn.setBlockState(pos, state.withProperty(COLOR, chair.getColor()), 2);

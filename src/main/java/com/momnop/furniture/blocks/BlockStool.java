@@ -7,6 +7,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
@@ -24,8 +25,8 @@ public class BlockStool extends BlockFurniture {
 	
 	public static final PropertyInteger COLOR = PropertyInteger.create("color", 0, 15);
 
-	public BlockStool(Material materialIn, float hardness, SoundType type, String unlocalizedName) {
-		super(materialIn, hardness, type, unlocalizedName);
+	public BlockStool(Material materialIn, float hardness, SoundType type, String unlocalizedName, CreativeTabs tab) {
+		super(materialIn, hardness, type, unlocalizedName, tab);
 		setDefaultState(this.getDefaultState().withProperty(COLOR, 0));
 	}
 	
@@ -57,7 +58,7 @@ public class BlockStool extends BlockFurniture {
 			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (heldItem.getItem() instanceof ItemDye && state.getValue(COLOR) != 15 - heldItem.getItemDamage()) {
 				if (!playerIn.capabilities.isCreativeMode) {
-					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), ItemStackTools.getStackSize(playerIn.getHeldItem(hand)) - 1);
+					ItemStackTools.incStackSize(playerIn.getHeldItem(hand), -1);
 				}
 				worldIn.setBlockState(pos, state.withProperty(COLOR, 15 - heldItem.getItemDamage()), 2);
 				return true;

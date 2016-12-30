@@ -2,7 +2,8 @@
   "forge_marker": 1,
   "defaults": {
 	"textures": {
-		"0": "blocks/stone"
+		"0": "blocks/stone",
+		"particle": "#0"
 	},
 	"model": "furniture:rock_one"
   },

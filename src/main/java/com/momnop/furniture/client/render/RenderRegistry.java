@@ -18,7 +18,6 @@ public final class RenderRegistry {
 	public static void registerRenderers() {
 		for (int i = 0; i < registryBlocks.size(); i++) {
 			register(registryBlocks.get(i));
-			System.out.println("Rendering Block: " + (registryBlocks.get(i)).getUnlocalizedName());
 		}
 	}
 
