@@ -30,7 +30,7 @@ import com.momnop.furniture.network.PacketDispatcher;
 import com.momnop.furniture.proxies.CommonProxy;
 import com.momnop.furniture.tiles.TileEntityCabinet;
 import com.momnop.furniture.tiles.TileEntityChair;
-import com.momnop.furniture.tiles.TileEntityFan;
+import com.momnop.furniture.tiles.TileEntityCeilingFan;
 import com.momnop.furniture.tiles.TileEntityRefrigerator;
 import com.momnop.furniture.tiles.TileEntityRefrigeratorTop;
 import com.momnop.furniture.tiles.TileEntitySofa;
@@ -86,18 +86,19 @@ public class Furniture
     {
     	FurnitureBlocks.load();
     	RecipeHandler.doRecipes();
+    	
+    	GameRegistry.registerTileEntity(TileEntitySofa.class, "tileEntitySofa");
+    	GameRegistry.registerTileEntity(TileEntityChair.class, "tileEntityChair");
+    	GameRegistry.registerTileEntity(TileEntityCeilingFan.class, "tileEntityCeilingFan");
+    	GameRegistry.registerTileEntity(TileEntityRefrigerator.class, "tileEntityRefrigerator");
+    	GameRegistry.registerTileEntity(TileEntityRefrigeratorTop.class, "tileEntityRefrigeratorTop");
+    	GameRegistry.registerTileEntity(TileEntityCabinet.class, "tileEntityCabinet");
     }
     
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
     	MinecraftForge.EVENT_BUS.register(new FurnitureEventHandler());
-    	GameRegistry.registerTileEntity(TileEntitySofa.class, "tileEntitySofa");
-    	GameRegistry.registerTileEntity(TileEntityChair.class, "tileEntityChair");
-    	GameRegistry.registerTileEntity(TileEntityFan.class, "tileEntityFan");
-    	GameRegistry.registerTileEntity(TileEntityRefrigerator.class, "tileEntityRefrigerator");
-    	GameRegistry.registerTileEntity(TileEntityRefrigeratorTop.class, "tileEntityRefrigeratorTop");
-    	GameRegistry.registerTileEntity(TileEntityCabinet.class, "tileEntityCabinet");
     	if (event.getSide() == Side.CLIENT) {
     		RenderRegistry.registerRenderers();
     	}

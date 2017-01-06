@@ -11,42 +11,40 @@ import net.minecraft.world.World;
 
 import com.momnop.furniture.blocks.BlockChair;
 import com.momnop.furniture.blocks.BlockSofa;
+import com.momnop.furniture.blocks.FurnitureBlocks;
+import com.momnop.furniture.network.MessageChairData;
 import com.momnop.furniture.network.MessageSofaData;
 import com.momnop.furniture.network.PacketDispatcher;
 
-public class TileEntitySofa extends TileEntity implements ITickable {
-	private int color = 0;
+public class TileEntityCeilingFan extends TileEntity implements ITickable {
+	public float prevRotation=0;
+	public float rotation=0;
+	public float turnSpeed=0;
+	public float perTick = 0;
 	
-	public void setColor(int color) {
-		this.color = 15 - color;
-		this.markDirty();
-	}
-	
-	public int getColor() {
-		return color;
-	}
-	
-	@Override
 	public void update() {
-		if (this.getWorld().getBlockState(pos).getBlock() instanceof BlockSofa) {
-			if (!this.getWorld().isRemote) {
-				PacketDispatcher.sendToAll(new MessageSofaData(pos, getColor()));
-			}
-			BlockSofa sofa = (BlockSofa) this.getWorld().getBlockState(pos).getBlock();
-			this.getWorld().setBlockState(pos, sofa.getActualState(this.getWorld().getBlockState(pos), this.getWorld(), pos));
-		}
-	}
+		turnSpeed = 1;
+		
+		double mod = 0.075;
+		
+		prevRotation = (float) (turnSpeed*mod);
+		rotation += turnSpeed*mod;
+		rotation %= 1;
+		perTick = (float) (turnSpeed*mod);
+	};
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.color = compound.getInteger("color");
+		this.rotation = compound.getInteger("rotation");
+		this.turnSpeed = compound.getInteger("turnSpeed");
 	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger("color", color);
+		compound.setFloat("rotation", rotation);
+		compound.setFloat("turnSpeed", turnSpeed);
 		return compound;
 	}
 	
@@ -70,7 +68,7 @@ public class TileEntitySofa extends TileEntity implements ITickable {
 	
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos,
-			IBlockState oldState, IBlockState newSate) {
-		return oldState.getBlock() != newSate.getBlock();
+			IBlockState oldState, IBlockState newState) {
+		return oldState.getBlock() != newState.getBlock();
 	}
 }

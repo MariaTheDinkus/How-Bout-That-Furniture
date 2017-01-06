@@ -6,7 +6,7 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 import com.momnop.furniture.client.render.TileEntityRenderFan;
-import com.momnop.furniture.tiles.TileEntityFan;
+import com.momnop.furniture.tiles.TileEntityCeilingFan;
 
 public class ClientProxy extends CommonProxy
 {
@@ -22,7 +22,7 @@ public class ClientProxy extends CommonProxy
     
     public void initRenders()
     {
-    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFan.class, new TileEntityRenderFan());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCeilingFan.class, new TileEntityRenderFan());
     }
     
     public void initKeybinds()

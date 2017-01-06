@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.momnop.furniture.tiles.TileEntityFan;
+import com.momnop.furniture.tiles.TileEntityCeilingFan;
 
 public class BlockFan extends BlockFurniture implements ITileEntityProvider {
 	
@@ -37,7 +37,7 @@ public class BlockFan extends BlockFurniture implements ITileEntityProvider {
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityFan();
+		return new TileEntityCeilingFan();
 	}
 	
 	@Override

@@ -16,9 +16,9 @@ import com.momnop.furniture.blocks.BlockFan;
 import com.momnop.furniture.blocks.FurnitureBlocks;
 import com.momnop.furniture.client.models.FanModel;
 import com.momnop.furniture.info.ModInfo;
-import com.momnop.furniture.tiles.TileEntityFan;
+import com.momnop.furniture.tiles.TileEntityCeilingFan;
 
-public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityFan> {
+public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityCeilingFan> {
 	private final FanModel model;
 	private float spinAmount = 0;
 	private static float speed = 1;
@@ -30,8 +30,11 @@ public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityFan
 	}
 	
 	@Override
-	public void renderTileEntityAt(TileEntityFan te, double x, double y,
+	public void renderTileEntityAt(TileEntityCeilingFan te, double x, double y,
 			double z, float partialTicks, int destroyStage) {
+		
+		float rot = 360 * (te.rotation + (partialTicks)*te.perTick);
+		
 		if (te.getWorld().getBlockState(te.getPos()).getBlock() instanceof BlockFan) {
 			IBlockState fan = te.getWorld().getBlockState(te.getPos());
 			
@@ -39,7 +42,7 @@ public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityFan
 				GL11.glPushMatrix();
 				GL11.glTranslated(x + 0.5, y, z + 0.5);
 				Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ModInfo.MODID + ":" + "textures/models/fan.png"));
-				GL11.glRotated(-spinAmount, 0, 1, 0);
+				GL11.glRotated(-rot, 0, 1, 0);
 				model.renderModel();
 				GL11.glPopMatrix();
 			}
@@ -51,7 +54,7 @@ public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityFan
 			GL11.glPushMatrix();
 			GL11.glTranslated(x + 0.5, y, z + 0.5);
 			Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ModInfo.MODID + ":" + "textures/models/fan.png"));
-			GL11.glRotated(-spinAmount, 0, 1, 0);
+			GL11.glRotated(-rot, 0, 1, 0);
 			model.renderModel();
 			GL11.glPopMatrix();
 		}
@@ -60,10 +63,10 @@ public class TileEntityRenderFan extends TileEntitySpecialRenderer<TileEntityFan
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void clientTick(ClientTickEvent event) {
-		spinAmount = spinAmount + 10;
-		if (spinAmount >= 360) {
-			spinAmount = 0;
-		}
+//		spinAmount = spinAmount + 10;
+//		if (spinAmount >= 360) {
+//			spinAmount = 0;
+//		}
 	}
 	
 	public static float lerp(float start, float end, float percent)
