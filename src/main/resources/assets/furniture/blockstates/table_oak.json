@@ -5,32 +5,58 @@
         "0": "blocks/planks_oak",
 		"particle": "#0"
     },
-	"model": "furniture:table",
-	"uvlock": true
+	"model": "furniture:table_top"
   },
   "variants": {
-    "normal": [{ "model": "furniture:table", "uvlock": true }],
-    "inventory": [{}],
-	
-	"east=false,north=false,south=false,west=false": [{}],
-	
-	"east=false,north=true,south=false,west=false": { "model": "furniture:table_side", "y": -90 },
-	"east=true,north=false,south=false,west=false": { "model": "furniture:table_side" },
-	"east=false,north=false,south=true,west=false": { "model": "furniture:table_side", "y": 90 },
-	"east=false,north=false,south=false,west=true": { "model": "furniture:table_side", "y": 180 },
-	
-	"east=true,north=true,south=true,west=true": { "model": "furniture:table_mid" },
-	"east=false,north=true,south=true,west=false": { "model": "furniture:table_mid" },
-	"east=true,north=false,south=false,west=true": { "model": "furniture:table_mid" },
-	
-	"east=true,north=true,south=true,west=false": { "model": "furniture:table_mid" },
-	"east=true,north=false,south=true,west=true": { "model": "furniture:table_mid" },
-	"east=false,north=true,south=true,west=true": { "model": "furniture:table_mid" },
-	"east=true,north=true,south=false,west=true": { "model": "furniture:table_mid" },
-	
-	"east=true,north=true,south=false,west=false": { "model": "furniture:table_corner", "y": -90 },
-	"east=true,north=false,south=true,west=false": { "model": "furniture:table_corner" },
-	"east=false,north=false,south=true,west=true": { "model": "furniture:table_corner", "y": 90 },
-	"east=false,north=true,south=false,west=true": { "model": "furniture:table_corner", "y": 180 }
+    "normal": { "model": "furniture:table_top" },
+    "inventory": [
+      {
+        "model": "furniture:table",
+        "transform": "forge:default-block"
+      }
+    ],
+    "ne": {
+      "true": { "submodel": "furniture:blank" },
+      "false": {
+        "submodel": {
+          "ne": {
+            "model": "furniture:table_leg",
+			"y": 90
+          }
+        }
+      }
+    },
+    "nw": {
+      "true": { "submodel": "furniture:blank" },
+      "false": {
+        "submodel": {
+          "nw": {
+            "model": "furniture:table_leg"
+          }
+        }
+      }
+    },
+    "sw": {
+      "true": { "submodel": "furniture:blank" },
+      "false": {
+        "submodel": {
+          "sw": {
+            "model": "furniture:table_leg",
+			"y": 270
+          }
+        }
+      }
+    },
+    "se": {
+      "true": { "submodel": "furniture:blank" },
+      "false": {
+        "submodel": {
+          "se": {
+            "model": "furniture:table_leg",
+            "y": 180
+          }
+        }
+      }
+    }
   }
 }
